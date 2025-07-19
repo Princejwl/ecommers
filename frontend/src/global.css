@@ -1,0 +1,17 @@
+/* Global background and font */
+body {
+  background-color: #eaeaea; /* soft gray instead of white */
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Optional: container padding */
+.container {
+  padding: 20px;
+}
+
+/* Make sure cards have shadows */
+.card {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
