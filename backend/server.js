@@ -18,7 +18,10 @@ console.log(User, Product); // Just to use them
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ['https://clickncart.vercel.app', 'http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
 
 // ✅ Connect to MongoDB
