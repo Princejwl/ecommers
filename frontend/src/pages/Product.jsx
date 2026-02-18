@@ -66,33 +66,36 @@ const Product = () => {
       <>
         <div className="container my-5 py-2">
           <div className="row">
-            <div className="col-md-6 col-sm-12 py-3">
-              <img
-                className="img-fluid"
-                src={product.image}
-                alt={product.title}
-                width="400px"
-                height="400px"
-              />
+            <div className="col-md-6 col-sm-12 py-3 animate-slide-in">
+              <div className="d-flex align-items-center justify-content-center bg-white rounded-4 p-5" style={{ minHeight: '400px' }}>
+                <img
+                    className="img-fluid"
+                    src={product.image}
+                    alt={product.title}
+                    style={{ maxHeight: '400px', objectFit: 'contain' }}
+                />
+              </div>
             </div>
-            <div className="col-md-6 col-md-6 py-5">
-              <h4 className="text-uppercase text-muted">{product.category}</h4>
-              <h1 className="display-5">{product.title}</h1>
-              <p className="lead">
+            <div className="col-md-6 col-md-6 py-5 animate-fade-in-up delay-200">
+              <h4 className="text-uppercase text-secondary">{product.category}</h4>
+              <h1 className="display-5 fw-bold">{product.title}</h1>
+              <p className="lead fw-bolder">
                 {product.rating && product.rating.rate}{" "}
-                <i className="fa fa-star"></i>
+                <i className="fa fa-star text-warning"></i>
               </p>
-              <h3 className="display-6  my-4">${product.price}</h3>
-              <p className="lead">{product.description}</p>
-              <button
-                className="btn btn-outline-dark"
-                onClick={() => addProduct(product)}
-              >
-                Add to Cart
-              </button>
-              <Link to="/cart" className="btn btn-dark mx-3">
-                Go to Cart
-              </Link>
+              <h3 className="display-6 fw-bold my-4" style={{ color: 'var(--primary-color)' }}>${product.price}</h3>
+              <p className="lead text-secondary">{product.description}</p>
+              <div className="d-flex gap-3 mt-4">
+                <button
+                    className="btn btn-outline-light px-4 py-2 hover-lift"
+                    onClick={() => addProduct(product)}
+                >
+                    Add to Cart
+                </button>
+                <Link to="/cart" className="btn btn-primary px-4 py-2 text-dark fw-bold btn-shine">
+                    Go to Cart
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -127,25 +130,23 @@ const Product = () => {
     return (
       <>
         <div className="py-4 my-4">
-          <div className="d-flex bg-dark">
+          <div className="d-flex">
             {similarProducts.map((item) => {
               return (
-                <div key={item.id} className="card mx-4 text-center">
-                  <img
-                    className="card-img-top p-3"
-                    src={item.image}
-                    alt="Card"
-                    height={300}
-                    width={300}
-                  />
+                <div key={item.id} className="card mx-4 text-center border-0" style={{ width: "18rem", backgroundColor: 'var(--surface-color)' }}>
+                  <div className="bg-white rounded overflow-hidden p-3" style={{ height: '300px', display: 'flex', alignItems: 'center' }}>
+                      <img
+                        className="card-img-top"
+                        src={item.image}
+                        alt="Card"
+                        style={{ maxHeight: '100%', width: '100%', objectFit: 'contain' }}
+                      />
+                  </div>
                   <div className="card-body">
-                    <h5 className="card-title">
-                      {item.title.substring(0, 15)}...
+                    <h5 className="card-title text-truncate">
+                      {item.title}
                     </h5>
                   </div>
-                  {/* <ul className="list-group list-group-flush">
-                    <li className="list-group-item lead">${product.price}</li>
-                  </ul> */}
                   <div className="card-body">
                     <Link
                       to={"/product/" + item.id}
@@ -154,7 +155,7 @@ const Product = () => {
                       Buy Now
                     </Link>
                     <button
-                      className="btn btn-dark m-1"
+                      className="btn btn-outline-primary m-1"
                       onClick={() => addProduct(item)}
                     >
                       Add to Cart

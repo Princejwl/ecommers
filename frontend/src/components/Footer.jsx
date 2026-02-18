@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-white py-5">
+    <footer className="text-white py-5" style={{ backgroundColor: 'var(--surface-color)', borderTop: 'var(--glass-border)' }}>
       <div className="container">
         <div className="row">
           <div className="col-md-3 mb-4">
@@ -26,10 +26,10 @@ const Footer = () => {
           <div className="col-md-3 mb-4">
             <h5 className="font-weight-bold mb-3">Follow Us</h5>
             <ul className="list-inline">
-              <li className="list-inline-item"><a href="https://www.facebook.com" className="text-white text-decoration-none"><i className="fab fa-facebook-f"></i> Facebook</a></li>
-              <li className="list-inline-item"><a href="https://www.instagram.com" className="text-white text-decoration-none"><i className="fab fa-instagram"></i> Instagram</a></li>
-              <li className="list-inline-item"><a href="https://twitter.com" className="text-white text-decoration-none"><i className="fab fa-twitter"></i> Twitter</a></li>
-              <li className="list-inline-item"><a href="https://www.linkedin.com" className="text-white text-decoration-none"><i className="fab fa-linkedin-in"></i> LinkedIn</a></li>
+              <li className="list-inline-item hover-lift"><a href="https://www.facebook.com" className="text-white text-decoration-none"><i className="fab fa-facebook-f"></i> Facebook</a></li>
+              <li className="list-inline-item hover-lift"><a href="https://www.instagram.com" className="text-white text-decoration-none"><i className="fab fa-instagram"></i> Instagram</a></li>
+              <li className="list-inline-item hover-lift"><a href="https://twitter.com" className="text-white text-decoration-none"><i className="fab fa-twitter"></i> Twitter</a></li>
+              <li className="list-inline-item hover-lift"><a href="https://www.linkedin.com" className="text-white text-decoration-none"><i className="fab fa-linkedin-in"></i> LinkedIn</a></li>
             </ul>
           </div>
           <div className="col-md-3 mb-4">

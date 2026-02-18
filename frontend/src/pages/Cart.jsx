@@ -38,12 +38,12 @@ const Cart = () => {
 
     return (
       <>
-        <section className="h-100 gradient-custom">
-          <div className="container py-5">
+        <section className="h-100">
+          <div className="container py-5 animate-fade-in-up">
             <div className="row d-flex justify-content-center my-4">
               <div className="col-md-8">
-                <div className="card mb-4">
-                  <div className="card-header py-3">
+                <div className="card mb-4 shimmer-effect" style={{ backgroundColor: 'var(--surface-color)' }}>
+                  <div className="card-header py-3" style={{ borderBottom: 'var(--glass-border)' }}>
                     <h5 className="mb-0">Item List</h5>
                   </div>
                   <div className="card-body">
@@ -51,12 +51,13 @@ const Cart = () => {
                       <div key={item.id}>
                         <div className="row d-flex align-items-center">
                           <div className="col-lg-3 col-md-12">
-                            <div className="bg-image rounded">
+                            <div className="bg-white rounded p-2" style={{ width: '100px', height: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                               <img
                                 src={item.image}
                                 alt={item.title}
-                                width={100}
-                                height={75}
+                                width={80}
+                                height={60}
+                                style={{ objectFit: 'contain' }}
                               />
                             </div>
                           </div>
@@ -70,30 +71,30 @@ const Cart = () => {
                           <div className="col-lg-4 col-md-6">
                             <div className="d-flex align-items-center">
                               <button
-                                className="btn btn-outline-dark px-3"
+                                className="btn btn-outline-light px-3 hover-lift"
                                 onClick={() => removeItem(item)}
                               >
                                 <i className="fa fa-minus"></i>
                               </button>
 
-                              <p className="mx-3 mb-0">{item.qty}</p>
+                              <p className="mx-3 mb-0 fs-5">{item.qty}</p>
 
                               <button
-                                className="btn btn-outline-dark px-3"
+                                className="btn btn-outline-light px-3 hover-lift"
                                 onClick={() => addItem(item)}
                               >
                                 <i className="fa fa-plus"></i>
                               </button>
                             </div>
 
-                            <p className="text-start text-md-center mt-2">
+                            <p className="text-start text-md-center mt-2 text-primary" style={{ color: 'var(--primary-color)' }}>
                               <strong>
                                 {item.qty} x ${item.price.toFixed(2)}
                               </strong>
                             </p>
                           </div>
                         </div>
-                        <hr className="my-4" />
+                        <hr className="my-4" style={{ borderColor: 'rgba(255,255,255,0.1)' }} />
                       </div>
                     ))}
                   </div>
@@ -101,29 +102,29 @@ const Cart = () => {
               </div>
 
               <div className="col-md-4">
-                <div className="card mb-4">
-                  <div className="card-header py-3 bg-light">
+                <div className="card mb-4" style={{ backgroundColor: 'var(--surface-color)' }}>
+                  <div className="card-header py-3" style={{ borderBottom: 'var(--glass-border)' }}>
                     <h5 className="mb-0">Order Summary</h5>
                   </div>
                   <div className="card-body">
                     <ul className="list-group list-group-flush">
-                      <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                      <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 bg-transparent text-white">
                         Products ({totalItems}) <span>${subtotal.toFixed(2)}</span>
                       </li>
-                      <li className="list-group-item d-flex justify-content-between align-items-center px-0">
+                      <li className="list-group-item d-flex justify-content-between align-items-center px-0 bg-transparent text-white">
                         Shipping <span>${shipping.toFixed(2)}</span>
                       </li>
-                      <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                      <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3 bg-transparent text-white">
                         <div>
                           <strong>Total amount</strong>
                         </div>
-                        <span>
+                        <span style={{ color: 'var(--primary-color)', fontSize: '1.2rem' }}>
                           <strong>${(subtotal + shipping).toFixed(2)}</strong>
                         </span>
                       </li>
                     </ul>
 
-                    <Link to="/checkout" className="btn btn-dark btn-lg btn-block">
+                    <Link to="/checkout" className="btn btn-primary btn-lg btn-block text-dark fw-bold w-100 btn-shine">
                       Go to checkout
                     </Link>
                   </div>
