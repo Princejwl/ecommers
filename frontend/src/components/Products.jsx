@@ -10,8 +10,6 @@ const Products = () => {
   const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All"); // Track active filter
-  const componentMounted = React.useRef(true);
-
   const dispatch = useDispatch();
 
   const addProduct = (product) => {
@@ -19,20 +17,21 @@ const Products = () => {
   };
 
   useEffect(() => {
+    let componentMounted = true;
     const getProducts = async () => {
       setLoading(true);
       const response = await fetch("https://fakestoreapi.com/products");
-      if (componentMounted.current) {
+      if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());
         setLoading(false);
       }
-      return () => {
-        componentMounted.current = false;
-      };
     };
 
     getProducts();
+    return () => {
+      componentMounted = false;
+    };
   }, []);
 
   const Loading = () => {
